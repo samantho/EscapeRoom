@@ -17,8 +17,9 @@ def generate_popup(clue, title, correct, unlocked):
     def submit():
         answer = ans_var.get()
         print("The answer submitted is : " + answer)
-        if answer == correct:
+        if answer.lower() == correct.lower():
             print("That's the answer!!!")
+            ans_var.set(correct)
             display = tk.Label(root, text = unlocked)
             display.grid(row=5,column=1)
         else:
@@ -43,9 +44,10 @@ class location:
         self.ty = ty
         self.by = by
 chair = location(388, 500, 518, 572)
+door = location(600,700,120,460)
 
 # main loop
-def start_tutorial():
+def start_tutorial(teamname):
     pygame.init()
     gameDisplay = pygame.display.set_mode((800,600))
     pygame.display.set_caption('Escape Room')
@@ -62,10 +64,20 @@ def start_tutorial():
                 ending = True
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if chair.lx <= mx <= chair.rx and chair.ty <= my <= chair.by:
-                    generate_popup("Chair","This is the message\nrow 2\n", "1234", "\nCongrats")
+                    generate_popup("Chair",
+                                   "\nThere was a clue under the seat!\n\nThe more of this there is, the less you see.\nWhat is it?\n",
+                                   "darkness",
+                                   "\nOpen the door by saying OPEN")
                     pygame.time.wait(500)
                     break
-            print(event)
+                if door.lx <= mx <= door.rx and door.ty <= my <= door.by:
+                    generate_popup("Door",
+                                   "\nWhat's the password?\n",
+                                   "OPEN",
+                                   "\nCongrats, " + teamname + "!\nYou Win!")
+                    pygame.time.wait(500)
+                    break
+            #print(event)
         pygame.display.update()
 
     pygame.quit()
