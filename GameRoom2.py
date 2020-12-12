@@ -1,12 +1,13 @@
 import pygame
 import pygame_menu
 import tkinter as tk
-from tkinter import messagebox
-
+from GameRoom import *
 
 pygame.display.set_caption('Escape Room')
+team_name = 'Hacker Squad'
 
 def generate_popup(clue, title, correct, unlocked):    
+    global team_name
     # popup setup
     root = tk.Tk()
     root.title(clue)
@@ -47,12 +48,14 @@ chair = location(388, 500, 518, 572)
 door = location(600,700,120,460)
 
 # main loop
-def start_tutorial(teamname):
+def begin_room2(teamname):
+    global team_name
+    team_name = teamname
     pygame.init()
     gameDisplay = pygame.display.set_mode((800,600))
     pygame.display.set_caption('Escape Room')
     clock = pygame.time.Clock()
-    gameDisplay.blit(pygame.image.load("library.png"),(0,0))
+    gameDisplay.blit(pygame.image.load("research_lab.png"),(0,0))
 
     ending = False
     while not ending:
@@ -63,20 +66,7 @@ def start_tutorial(teamname):
             if event.type == pygame.QUIT:
                 ending = True
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if chair.lx <= mx <= chair.rx and chair.ty <= my <= chair.by:
-                    generate_popup("Chair",
-                                   "\nThere was a clue under the seat!\n\nThe more of this there is, the less you see.\nWhat is it?\n",
-                                   "darkness",
-                                   "\nOpen the door by saying OPEN")
-                    pygame.time.wait(500)
-                    break
-                if door.lx <= mx <= door.rx and door.ty <= my <= door.by:
-                    generate_popup("Door",
-                                   "\nWhat's the password?\n",
-                                   "OPEN",
-                                   "\nCongrats, " + teamname + "!\nYou Win!")
-                    break
-            #print(event)
+                print(event)
         pygame.display.update()
 
     pygame.quit()
