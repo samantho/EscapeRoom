@@ -108,7 +108,7 @@ def begin_room1(teamname):
                     generate_popup("Toolbox",
                                    "\nThe toolbox is locked with a four-digit lock.\nTry a code:\n",
                                    "0529",
-                                   "\nInside:\nUSB\nPHONE BATTERY\nMAGNIFYING GLASS")
+                                   "\nInside:\nCIPHER\nPHONE BATTERY\nMAGNIFYING GLASS")
                     break
                 if wall_clock.lx <= mx <= wall_clock.rx and wall_clock.ty <= my <= wall_clock.by:
                     generate_popup("Clock",
@@ -118,9 +118,9 @@ def begin_room1(teamname):
                     break
                 if journal.lx <= mx <= journal.rx and journal.ty <= my <= journal.by:
                     generate_popup("Journal",
-                                   "\nEntry: Mrxuqdo, Lw'v rqh gdb vlqfh wkh glvfryhub.\nL kdg d vwudqjh ylvlw wrgdb iurp wkh FHR ri Crrp.\nWkhb vhhphg yhub dqjub dqg wkuhdwhqhg ph.\n\nIt seems to be encrypted. Done reading?\n",
+                                   "Entry: Mrxuqdo, Lw'v rqh gdb vlqfh wkh glvfryhub.\nL kdg d vwudqjh ylvlw wrgdb iurp wkh FHR ri Crrp.\nWkhb vhhphg yhub dqjub dqg wkuhdwhqhg ph.\n\nIt seems to be encrypted. Done reading?\n",
                                    "yes",
-                                   "\nMaybe the cypher to this message is in another room...")
+                                   "\nMaybe the cipher to this message is in another room...\nshift 3")
                     break
                 if trash.lx <= mx <= trash.rx and trash.ty <= my <= trash.by:
                     generate_popup("Trash",

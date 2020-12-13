@@ -74,51 +74,21 @@ def begin_room2(teamname):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if vials.lx <= mx <= vials.rx and vials.ty <= my <= vials.by:
                     generate_popup("Vials",
-                                   "\nWhat are the three ingredients to the covid cure?\n(format: 1, 2, 3)\n",
-                                   "masks, mRNA, love",
-                                   "\nCongrats, " + teamname + "!\nYou Win!")
+                                   "\nWhat is the cure and who was the murderer??\nThe CEO of ____ murdered Dr. Anthony\nfor the ____ cure! (name, cure)\n",
+                                   "Zoom, mRNA",
+                                   "\nCongrats, " + teamname + "!\nYou Solved the Murder and Found the Cure!\nThe World Thanks You!")
                     break
                 if microscope.lx <= mx <= microscope.rx and microscope.ty <= my <= microscope.by:
                     generate_popup("Microscope",
-                                   "\n\n",
-                                   "answer",
-                                   "\n")
-                    break
-                if lab_journal.lx <= mx <= lab_journal.rx and lab_journal.ty <= my <= lab_journal.by:
-                    generate_popup("Journal",
-                                   "\n\n",
-                                   "answer",
-                                   "\n")
-                    break
-                if tablet.lx <= mx <= tablet.rx and tablet.ty <= my <= tablet.by:
-                    generate_popup("Tablet",
-                                   "\n\n",
-                                   "answer",
-                                   "\n")
-                    break
-                if pictures1.lx <= mx <= pictures1.rx and pictures1.ty <= my <= pictures1.by:
-                    generate_popup("Research Image",
-                                   "\n\n",
-                                   "answer",
-                                   "\n")
-                    break
-                if pictures2.lx <= mx <= pictures2.rx and pictures2.ty <= my <= pictures2.by:
-                    generate_popup("Research Image",
-                                   "\n\n",
-                                   "answer",
-                                   "\n")
-                    break
-                if papers.lx <= mx <= papers.rx and papers.ty <= my <= papers.by:
-                    generate_popup("Research Papers",
-                                   "\n\n",
-                                   "answer",
-                                   "\n")
+                                   "\nWhat do St. Patrick's Day, coronavirus lockdowns,\nand daylight savings time have in common?\n",
+                                   "March",
+                                   "\nThere are some interesting slides under the microscope...\nThis one shows the key ingredient to the cure is mRNA!")
                     break
                 if lamp.lx <= mx <= lamp.rx and lamp.ty <= my <= lamp.by:
-                    generate_popup("Desk",
-                                   "\n\n",
-                                   "answer",
-                                   "\n")
+                    generate_popup("Journal",
+                                   "Entry: Mrxuqdo, Lw'v rqh gdb vlqfh wkh glvfryhub.\nL kdg d vwudqjh ylvlw wrgdb iurp wkh FHR ri Crrp.\nWkhb vhhphg yhub dqjub dqg wkuhdwhqhg ph.\nWhich of your tools decodes messages?\n",
+                                   "CIPHER",
+                                   "\nEntry: Journal, It's one day since the discovery.\nI had a strange visit today from the CEO of Zoom.\nThey seemed very angry and threatened me.\n")
                     break
         pygame.display.update()
 
