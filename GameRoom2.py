@@ -44,8 +44,14 @@ class location:
         self.rx = rx
         self.ty = ty
         self.by = by
-chair = location(388, 500, 518, 572)
-door = location(600,700,120,460)
+vials = location(270,401,383,551)
+microscope = location(432,495,250,409)
+lab_journal = location(435,529,425,465)
+tablet = location(92,246,453,531)
+pictures1 = location(385,440,109,193)
+pictures2 = location(330,396,202,290)
+papers = location(307,371,102,167)
+lamp = location(16,154,210,446)
 
 # main loop
 def begin_room2(teamname):
@@ -66,7 +72,54 @@ def begin_room2(teamname):
             if event.type == pygame.QUIT:
                 ending = True
             if event.type == pygame.MOUSEBUTTONDOWN:
-                print(event)
+                if vials.lx <= mx <= vials.rx and vials.ty <= my <= vials.by:
+                    generate_popup("Vials",
+                                   "\nWhat are the three ingredients to the covid cure?\n(format: 1, 2, 3)\n",
+                                   "masks, mRNA, love",
+                                   "\nCongrats, " + teamname + "!\nYou Win!")
+                    break
+                if microscope.lx <= mx <= microscope.rx and microscope.ty <= my <= microscope.by:
+                    generate_popup("Microscope",
+                                   "\n\n",
+                                   "answer",
+                                   "\n")
+                    break
+                if lab_journal.lx <= mx <= lab_journal.rx and lab_journal.ty <= my <= lab_journal.by:
+                    generate_popup("Journal",
+                                   "\n\n",
+                                   "answer",
+                                   "\n")
+                    break
+                if tablet.lx <= mx <= tablet.rx and tablet.ty <= my <= tablet.by:
+                    generate_popup("Tablet",
+                                   "\n\n",
+                                   "answer",
+                                   "\n")
+                    break
+                if pictures1.lx <= mx <= pictures1.rx and pictures1.ty <= my <= pictures1.by:
+                    generate_popup("Research Image",
+                                   "\n\n",
+                                   "answer",
+                                   "\n")
+                    break
+                if pictures2.lx <= mx <= pictures2.rx and pictures2.ty <= my <= pictures2.by:
+                    generate_popup("Research Image",
+                                   "\n\n",
+                                   "answer",
+                                   "\n")
+                    break
+                if papers.lx <= mx <= papers.rx and papers.ty <= my <= papers.by:
+                    generate_popup("Research Papers",
+                                   "\n\n",
+                                   "answer",
+                                   "\n")
+                    break
+                if lamp.lx <= mx <= lamp.rx and lamp.ty <= my <= lamp.by:
+                    generate_popup("Desk",
+                                   "\n\n",
+                                   "answer",
+                                   "\n")
+                    break
         pygame.display.update()
 
     pygame.quit()

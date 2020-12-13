@@ -94,38 +94,38 @@ def begin_room1(teamname):
                     break
                 if lab_coat.lx <= mx <= lab_coat.rx and lab_coat.ty <= my <= lab_coat.by:
                     generate_popup("Lab Coat",
-                                   "\nIn the pockets you find:\nPAPERCLIP, GUM WRAPPER, PEN, ID CARD\n",
+                                   "\nIn the pockets you find:\nPAPERCLIP, GUM WRAPPER, PEN, ID CARD,\nNOTE to revise journal on desk\n",
                                    "ID Card",
-                                   "\nHead Scientist at *smudge*\nFirst Name: S\nLast Name: Anthony\nID NUM: *smudge*")
+                                   "\nHead Scientist at *smudge*\nName: S Anthony\nID NUM: *smudge*")
                     break
                 if phone.lx <= mx <= phone.rx and phone.ty <= my <= phone.by:
                     generate_popup("Phone",
-                                   "\nIt won't turn on.\nIt seems to be missing something...\n",
+                                   "\nThe cell phone won't turn on.\nIt seems to be missing something...\n",
                                    "PHONE BATTERY",
                                    "\nI_: _ 7 5 _ 0 3\t_ f_u_d _h_ c_r_.\n_u_o_s _p_e_d _a_t _n_ t_i_ m_y _u_t _o_e _o_p_n_e_.\n_ j_s_ w_n_ t_ s_v_ l_v_s_ b_t _ f_a_ m_n_ i_ i_ d_n_e_.\n_t_y _a_e _n_ w_a_ a _a_k_ j_s_ i_ c_s_.")
                     break
                 if toolbox.lx <= mx <= toolbox.rx and toolbox.ty <= my <= toolbox.by:
                     generate_popup("Toolbox",
                                    "\nThe toolbox is locked with a four-digit lock.\nTry a code:\n",
-                                   "1234",
+                                   "0529",
                                    "\nInside:\nUSB\nPHONE BATTERY\nMAGNIFYING GLASS")
                     break
                 if wall_clock.lx <= mx <= wall_clock.rx and wall_clock.ty <= my <= wall_clock.by:
                     generate_popup("Clock",
-                                   "\n\n",
-                                   "answer",
-                                   "\nclue")
+                                   "\nTurn me on my side and I am everything.\nCut me in half and I am nothing.\nWhat am I?\n",
+                                   "eight",
+                                   "\nHuh that's strange.\nThe clock is stuck at 05:29")
                     break
                 if journal.lx <= mx <= journal.rx and journal.ty <= my <= journal.by:
                     generate_popup("Journal",
-                                   "\n\n",
-                                   "answer",
-                                   "\nclue")
+                                   "\nEntry: Mrxuqdo, Lw'v rqh gdb vlqfh wkh glvfryhub.\nL kdg d vwudqjh ylvlw wrgdb iurp wkh FHR ri Crrp.\nWkhb vhhphg yhub dqjub dqg wkuhdwhqhg ph.\n\nIt seems to be encrypted. Done reading?\n",
+                                   "yes",
+                                   "\nMaybe the cypher to this message is in another room...")
                     break
                 if trash.lx <= mx <= trash.rx and trash.ty <= my <= trash.by:
                     generate_popup("Trash",
-                                   "\npuzzle\n",
-                                   "answer",
+                                   "\nWhat can you catch, but never throw?\nA  _ _ _ _\n",
+                                   "cold",
                                    "\n_D_ 2 _ _ 4 _ _\tI _o_n_ t_e _u_e_\nR_m_r_ s_r_a_ f_s_ a_d _h_s _a_ h_r_ s_m_ c_m_a_i_s_\nI _u_t _a_t _o _a_e _i_e_, _u_ I _e_r _i_e _s _n _a_g_r_\nS_a_ s_f_ a_d _e_r _ m_s_, _u_t _n _a_e_")
                     break
                 print(event)
