@@ -10,6 +10,7 @@ def generate_popup(clue, title, correct, unlocked):
     root = tk.Tk()
     root.title(clue)
     root.geometry("300x200")
+    root.eval('tk::PlaceWindow . center')
     ans_var = tk.StringVar()
 
     # popup submission
