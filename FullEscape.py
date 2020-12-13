@@ -1,13 +1,10 @@
-import pygame
-import pygame_menu
+import pygame, pygame_menu
 import tkinter as tk
-from GameRoom2 import *
 
-pygame.display.set_caption('Escape Room')
 team_name = 'Hacker Squad'
 next_room = False
 
-def generate_popup(clue, title, correct, unlocked):
+def generate_popup(clue, title, correct, unlocked):    
     global team_name
     # popup setup
     root = tk.Tk()
@@ -48,6 +45,58 @@ class location:
         self.rx = rx
         self.ty = ty
         self.by = by
+vials = location(270,401,383,551)
+microscope = location(432,495,250,409)
+lab_journal = location(435,529,425,465)
+tablet = location(92,246,453,531)
+pictures1 = location(385,440,109,193)
+pictures2 = location(330,396,202,290)
+papers = location(307,371,102,167)
+lamp = location(16,154,210,446)
+
+# main loop
+def begin_room2(teamname):
+    pygame.display.set_caption('Escape Room') 
+    global team_name
+    team_name = teamname
+    pygame.init()
+    gameDisplay = pygame.display.set_mode((800,600))
+    pygame.display.set_caption('Escape Room')
+    clock = pygame.time.Clock()
+    gameDisplay.blit(pygame.image.load("research_lab.png"),(0,0))
+
+    ending = False
+    while not ending:
+
+        mx, my = pygame.mouse.get_pos()
+        
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                ending = True
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if vials.lx <= mx <= vials.rx and vials.ty <= my <= vials.by:
+                    generate_popup("Vials",
+                                   "\nWhat is the cure and who was the murderer??\nThe CEO of ____ murdered Dr. Anthony\nfor the ____ cure! (name, cure)\n",
+                                   "Zoom, mRNA",
+                                   "\nCongrats, " + teamname + "!\nYou Solved the Murder and Found the Cure!\nThe World Thanks You!")
+                    break
+                if microscope.lx <= mx <= microscope.rx and microscope.ty <= my <= microscope.by:
+                    generate_popup("Microscope",
+                                   "\nWhat do St. Patrick's Day, coronavirus lockdowns,\nand daylight savings time have in common?\n",
+                                   "March",
+                                   "\nThere are some interesting slides under the microscope...\nThis one shows the key ingredient to the cure is mRNA!")
+                    break
+                if lamp.lx <= mx <= lamp.rx and lamp.ty <= my <= lamp.by:
+                    generate_popup("Journal",
+                                   "Entry: Mrxuqdo, Lw'v rqh gdb vlqfh wkh glvfryhub.\nL kdg d vwudqjh ylvlw wrgdb iurp wkh FHR ri Crrp.\nWkhb vhhphg yhub dqjub dqg wkuhdwhqhg ph.\nWhich of your tools decodes messages?\n",
+                                   "CIPHER",
+                                   "\nEntry: Journal, It's one day since the discovery.\nI had a strange visit today from the CEO of Zoom.\nThey seemed very angry and threatened me.\n")
+                    break
+        pygame.display.update()
+
+    pygame.quit()
+    quit()
+
 lab = location(671,799,1,264)
 body = location(130,531,416,595)
 lab_coat = location(613,650,51,272)
@@ -60,6 +109,7 @@ trash = location(204,294,236,316)
 
 # main loop
 def begin_room1(teamname):
+    pygame.display.set_caption('Escape Room')
     global team_name
     team_name = teamname
     pygame.init()
@@ -133,3 +183,85 @@ def begin_room1(teamname):
 
     pygame.quit()
     quit()
+
+
+
+chair = location(388, 500, 518, 572)
+door = location(600,700,120,460)
+
+# main loop
+def start_tutorial(teamname):
+    pygame.init()
+    gameDisplay = pygame.display.set_mode((800,600))
+    pygame.display.set_caption('Escape Room')
+    clock = pygame.time.Clock()
+    gameDisplay.blit(pygame.image.load("library.png"),(0,0))
+
+    ending = False
+    while not ending:
+
+        mx, my = pygame.mouse.get_pos()
+        
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                ending = True
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if chair.lx <= mx <= chair.rx and chair.ty <= my <= chair.by:
+                    generate_popup("Chair",
+                                   "\nThere was a clue under the seat!\n\nThe more of this there is, the less you see.\nWhat is it?\n",
+                                   "darkness",
+                                   "\nOpen the door by saying OPEN")
+                    pygame.time.wait(500)
+                    break
+                if door.lx <= mx <= door.rx and door.ty <= my <= door.by:
+                    generate_popup("Door",
+                                   "\nWhat's the password?\n",
+                                   "OPEN",
+                                   "\nCongrats, " + teamname + "!\nYou Win!")
+                    break
+            #print(event)
+        pygame.display.update()
+
+    pygame.quit()
+    quit()
+
+
+
+
+pygame.init()
+surface = pygame.display.set_mode((800,600))
+
+level = 'Hard'
+teamname = 'Hacker Squad'
+
+def team_name(name):
+    global teamname
+    teamname = name
+    
+def set_difficulty(value, difficulty):
+    global level
+    level = value[0]
+
+def start_game():
+    if level == 'Easy':
+        print('Begin Tutorial Game')
+        start_tutorial(teamname) # from TutorialGame
+    if level == 'Hard':
+        print('Begin Main Game')
+        begin_room1(teamname) # from Room1
+
+menu_theme = pygame_menu.themes.THEME_DARK.copy()
+menu_theme.background_color = pygame_menu.baseimage.BaseImage(
+    image_path="coding_menu.png",
+    drawing_mode=pygame_menu.baseimage.IMAGE_MODE_REPEAT_XY
+)
+
+menu = pygame_menu.Menu(600, 800, 'Escape Room',
+                       theme=menu_theme)
+
+menu.add_text_input('Team Name : ', default=' Hacker Squad', onchange=team_name)
+menu.add_selector('Difficulty : ', [('Hard', 1), ('Easy', 2)], onchange=set_difficulty)
+menu.add_button('Enter Room', start_game)
+menu.add_button('Quit', pygame_menu.events.EXIT)
+
+menu.mainloop(surface)
